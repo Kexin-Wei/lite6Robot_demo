@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.10)
 project(lite6RobotDemo)
 
 add_executable(lite6RobotDemo main.cpp)
-
+add_subdirectory(example)
 target_include_directories(lite6RobotDemo PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/libs/lite6RobotxArmCxxSDK/include
 )
