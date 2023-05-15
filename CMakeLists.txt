@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 Kristin Kexin Wei <wkx611@outlook.com>
+#
+# SPDX-License-Identifier: MIT
+
 cmake_minimum_required(VERSION 3.10)
 
 project(lite6RobotDemo)

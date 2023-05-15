@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2023 Kristin Kexin Wei <wkx611@outlook.com>
+
+SPDX-License-Identifier: MIT
+-->
+
 lite6Robot_demo
 ===
 A test cxx demo for [UFactory Lite 6 Robot](https://www.ufactory.cc/product-page/ufactory-lite-6) control

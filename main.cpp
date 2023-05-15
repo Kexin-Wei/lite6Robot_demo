@@ -6,7 +6,10 @@
  * @version 0.1
  * @date 2023-05-11
  * 
- * @copyright Copyright (c) 2023, Kexin-Wei, MIT License
+ * SPDX-FileCopyrightText: 2023 Kristin Kexin Wei <wkx611@outlook.com>
+ * 
+ * SPDX-License-Identifier: MIT
+ * SPDX-License-Identifier: MIT License
  * 
  */
 
