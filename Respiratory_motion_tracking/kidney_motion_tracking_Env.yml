@@ -1,0 +1,20 @@
+name: kidney_motion_tracking
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.7
+  - matplotlib
+  - pip=21.2.2
+  - pip:
+    - crcmod==1.7
+    - neurite==0.1
+    - nibabel==3.2.2
+    - numpy==1.19.5
+    - opencv-python==4.5.5.64
+    - pyigtl==0.1.0
+    - pysimplegui==4.60.1
+    - pystrum==0.1
+    - simpleitk==1.2.4
+    - vtk==9.1.0
+    - wslink==1.6.4
