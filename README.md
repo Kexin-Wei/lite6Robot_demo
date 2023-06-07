@@ -21,5 +21,4 @@ A test cxx demo for [UFactory Lite 6 Robot](https://www.ufactory.cc/product-page
 | Convert to 3d view                                           |                                                              |
 | ![image-20230512135700070](imgs/image-20230512135700070.png) | ![image-20230512135715615](imgs/image-20230512135715615.png) |
 
-## jkljd
 

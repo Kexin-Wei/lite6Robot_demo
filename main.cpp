@@ -16,6 +16,9 @@
 #include <iostream>
 #include <xarm/wrapper/xarm_api.h>
 
+// TODO1: move robot using constant speed to a target position
+// TODO2: move robot following a trajectory
+// TODO3: move robot using velocity control following a trajectory (sin curve) and write the speed and acceleration to file
 
 int main(int argc, char **argv) {
   if (argc < 2) {
