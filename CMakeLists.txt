@@ -15,3 +15,4 @@ target_link_libraries(lite6RobotDemo PUBLIC
 	debug ${CMAKE_CURRENT_SOURCE_DIR}/libs/lite6RobotxArmCxxSDK/lib/Debug/xarm.lib
 	optimized ${CMAKE_CURRENT_SOURCE_DIR}/libs/lite6RobotxArmCxxSDK/lib/Release/xarm.lib
 )
+install(FILES $<TARGET_PDB_FILE:${appname}> DESTINATION ${CMAKE_INSTALL_BINDIR}/$<CONFIG> OPTIONAL)
