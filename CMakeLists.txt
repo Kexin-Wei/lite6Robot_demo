@@ -6,6 +6,8 @@ cmake_minimum_required(VERSION 3.10)
 
 project(lite6RobotDemo)
 
+add_subdirectory(lite6SDK)
+
 add_executable(lite6RobotDemo main.cpp)
 # add_subdirectory(example)
 # add_subdirectory(libs/test)
@@ -18,8 +20,6 @@ add_executable(lite6RobotDemo main.cpp)
 # 	optimized ${CMAKE_CURRENT_SOURCE_DIR}/libs/lite6RobotxArmCxxSDK/lib/Release/xarm.lib
 # 	testApi
 # )
-
-add_subdirectory(lite6SDK)
 
 target_link_libraries(lite6RobotDemo PUBLIC
 	xarm
