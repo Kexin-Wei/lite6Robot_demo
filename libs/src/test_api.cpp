@@ -1,13 +1,7 @@
 #include <xarm/wrapper/xarm_api.h>
-
-int testApi(int argc, char **argv) 
+int testApi(const std::string& port) 
 {
-  if (argc < 2) {
-    printf("Please enter IP address\n");
-    return 0;
-  }
-  std::string port(argv[1]);
-
+  
   XArmAPI *arm = new XArmAPI(port);
   arm->motion_enable(true);
   arm->set_mode(0);
@@ -41,5 +35,14 @@ int testApi(int argc, char **argv)
   print_nvect("* joint_speed_limit:", arm->joint_speed_limit, 2);
   print_nvect("* joint_acc_limit:", arm->joint_acc_limit, 2);
   print_nvect("* joints_torque:", arm->joints_torque, 7);
+
+  printf("==========DH PARAMS==============\n");
+  fp32 dh_params[28];
+  arm->get_dh_params(dh_params);
+  for (int i = 0; i < 7; i++)
+  {
+    printf("Joint %d: theta: %f, alpha: %f, r: %f, d: %f\n", dh_params[i*7],dh_params[i*7+1],dh_params[i*7+2],dh_params[i*7+3]);
+  }
+  
   return 0;
 }

@@ -1,2 +1,2 @@
 #pragma once
-int testApi(int argc, char **argv);
+int testApi(const std::string &port);
