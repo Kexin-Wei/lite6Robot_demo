@@ -24,6 +24,7 @@ int main()
     const std::string port("192.168.1.154");
     // testApi(port);
     fp32 translation[6] = {0, 0, 5, 0, 2, 0};
-    moveRobot(port, translation);
+    fp32 newSpeed{0.1};
+    moveRobot(port, translation, newSpeed);
     return 1;
 }

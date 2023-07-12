@@ -1,5 +1,5 @@
 #include <control_traj.h>
-bool moveRobot(const std::string &port, fp32 *translation)
+bool moveRobot(const std::string &port, fp32 *translation, fp32 newSpeed)
 {
     XArmAPI *arm = new XArmAPI(port);
     sleep_milliseconds(500);
@@ -25,9 +25,23 @@ bool moveRobot(const std::string &port, fp32 *translation)
     {
         targetPose[i] = initPose[i] + translation[i];
     }
-    ret = arm->set_position(targetPose, true);
-    printf("new position is, ret=%d, pose=[%f, %f, %f, %f, %f, %f]\nPress Enter to continue ...",
-           ret, targetPose[0], targetPose[1], targetPose[2], targetPose[3], targetPose[4], targetPose[5]);
+
+    fp32 lastSpeed{arm->last_used_tcp_speed};
+    printf("Last used speed is %f\n", lastSpeed);
+    if (abs(newSpeed) < abs(lastSpeed))
+    {
+        lastSpeed = newSpeed;
+    }
+    printf("Moving speed is set to %f\n", lastSpeed);
+
+    // record steady_clock
+    auto start = std::chrono::steady_clock::now();
+    ret = arm->set_position(targetPose, -1, lastSpeed, 0, 0, true, 20, false, 0);
+    auto end = std::chrono::steady_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    printf("New position is, ret=%d, pose=[%f, %f, %f, %f, %f, %f], cost time %ld\nPress Enter to continue ...",
+           ret, targetPose[0], targetPose[1], targetPose[2], targetPose[3], targetPose[4], targetPose[5], duration.count());
 
     printf("finished.");
+    return 1;
 }
