@@ -1,13 +1,7 @@
 #include <xarm/wrapper/xarm_api.h>
-
-int testApi(int argc, char **argv) 
+int testApi(const std::string& port) 
 {
-  if (argc < 2) {
-    printf("Please enter IP address\n");
-    return 0;
-  }
-  std::string port(argv[1]);
-
+  
   XArmAPI *arm = new XArmAPI(port);
   arm->motion_enable(true);
   arm->set_mode(0);
