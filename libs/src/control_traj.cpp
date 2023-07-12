@@ -1,4 +1,3 @@
-// TODO1: move robot using constant speed to a target position
 #include <control_traj.h>
 bool moveRobot(const std::string &port, fp32 *translation)
 {

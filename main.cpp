@@ -23,7 +23,7 @@ int main()
 {
     const std::string port("192.168.1.154");
     // testApi(port);
-    fp32 translation[6] = {5, -5, 5, 0, 0, 0};
+    fp32 translation[6] = {0, 0, 5, 0, 2, 0};
     moveRobot(port, translation);
     return 1;
 }
