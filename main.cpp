@@ -12,19 +12,22 @@
  * SPDX-License-Identifier: MIT License
  *
  */
-
 #include <iostream>
 #include <xarm/wrapper/xarm_api.h>
 #include <test_api.h>
 #include <control_traj.h>
-// TODO2: move robot following a trajectory
 // TODO3: move robot using velocity control following a trajectory (sin curve) and write the speed and acceleration to file
 int main()
 {
     const std::string port("192.168.1.154");
     // testApi(port);
-    fp32 translation[6] = {0, 0, 5, 0, 2, 0};
-    fp32 newSpeed{0.1};
-    moveRobot(port, translation, newSpeed);
+
+    // 1. move robot using position control
+    // fp32 translation[6] = {0, 5, 5, 0, 0, 0};
+    // fp32 newSpeed{1};
+    // moveRobot(port, translation, newSpeed);
+
+    // TODO2: move robot following a trajectory
+    
     return 1;
 }
