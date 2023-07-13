@@ -38,7 +38,7 @@ bool moveRobot(const std::string &port, fp32 *translation, fp32 newSpeed)
     auto start = std::chrono::steady_clock::now();
     ret = arm->set_position(targetPose, -1, lastSpeed, 0, 0, true, 20, false, 0);
     auto end = std::chrono::steady_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
     printf("New position is, ret=%d, pose=[%f, %f, %f, %f, %f, %f], cost time %ld\nPress Enter to continue ...",
            ret, targetPose[0], targetPose[1], targetPose[2], targetPose[3], targetPose[4], targetPose[5], duration.count());
 
