@@ -19,7 +19,9 @@
 #define RUN_CODE 2
 
 #include <fstream>
+#include <filesystem>
 // TODO3: move robot using velocity control following a trajectory (sin curve) and write the speed and acceleration to file
+
 int main()
 {
     const std::string port("192.168.1.154");
@@ -28,14 +30,17 @@ int main()
 
 #elif RUN_CODE == 1
     // 1. move robot using position control
-    fp32 translation[6] = {0, 5, 5, 0, 0, 0};
-    fp32 newSpeed{1};
+    fp32 translation[6] = {0, -5, 5, 0, 0, 0};
+    fp32 newSpeed{5};
     moveRobot(port, translation, newSpeed);
 
 #elif RUN_CODE == 2
     // TODO2: move robot following a trajectory, which wroten in the file
     // read trajectory from file trajectory.txt
-    std::ifstream trajFile("trajectory.txt", std::ios::in);
+    auto currentFolder = std::filesystem::current_path();
+    std::string fileName = "trajectory.txt";
+    fp32 newSpeed{10};
+    std::ifstream trajFile(currentFolder.append(fileName), std::ios::in);
     if (!trajFile.is_open())
     {
         std::cout << "Error opening file trajectory.txt" << std::endl;
@@ -54,14 +59,24 @@ int main()
         }
         traj.push_back(point);
     }
+
+    fp32 initPose[6];
+    XArmAPI *arm = initRobot(port, initPose);
     for (auto point : traj)
     {
+        std::vector<float> translation;
         for (auto value : point)
         {
+            translation.push_back(value);
             printf("%f ", value);
         }
-        printf("\n");
+        fp32 displacement[6] = {translation.at(0), translation.at(1), translation.at(2), 0, 0, 0};
+        moveOneStep(arm, initPose, displacement, newSpeed);
+        // sleep_ms(200);
+        printf("\n - ");
+        // FIXME: get feedback from the robot
     }
+    printf("Finished!\n");
 #endif
     return 1;
 }
