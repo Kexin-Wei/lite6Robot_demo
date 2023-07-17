@@ -23,7 +23,7 @@ XArmAPI* initRobot(const std::string &port, fp32 *initPose)
     return arm;
 }
 
-std::pair<fp32 *, fp32> moveOneStep(XArmAPI* arm, fp32 *initPose, fp32 *translation, fp32 newSpeed)
+std::pair<fp32 *, fp32> moveOneStep(XArmAPI* arm, fp32 *initPose, fp32 *translation, fp32 newSpeed, bool wait)
 {
     fp32 targetPose[6];
     for (int i = 0; i < 6; i++)
@@ -36,7 +36,7 @@ std::pair<fp32 *, fp32> moveOneStep(XArmAPI* arm, fp32 *initPose, fp32 *translat
         lastSpeed = newSpeed;
     }
     int ret;
-    ret = arm->set_position(targetPose, -1, lastSpeed, 0, 0, true, 20, false, 0);
+    ret = arm->set_position(targetPose, -1, lastSpeed, 0, 0, wait, 20, false, 0);
     std::pair<fp32 *, fp32> newPosNewSpeed{targetPose,lastSpeed};
     return newPosNewSpeed;
 }

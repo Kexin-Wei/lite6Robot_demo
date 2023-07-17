@@ -34,8 +34,10 @@ int main()
     fp32 newSpeed{1};
     moveRobot(port, translation, newSpeed);
 
+#elif RUN_CODE == 2
     // TODO2: move robot following a trajectory, which wroten in the file
     // read trajectory from file trajectory.txt
+    // write trajectory using xArm API
     auto currentFolder = std::filesystem::current_path();
     std::string fileName = "trajectory.txt";
     fp32 newSpeed{10};
@@ -61,6 +63,7 @@ int main()
 
     fp32 initPose[6];
     XArmAPI *arm = initRobot(port, initPose);
+    int ret;
     for (auto point : traj)
     {
         std::vector<float> translation;
@@ -76,6 +79,7 @@ int main()
         // FIXME: get feedback from the robot
     }
     printf("Finished!\n");
+
 #endif
     return 1;
 }
