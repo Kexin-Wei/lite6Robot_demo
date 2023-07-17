@@ -23,11 +23,7 @@ if __name__ == "__main__":
     er = np.array([1, 1, 1])
     er = er/np.linalg.norm(er)
     ep = np.array([0, 1, 3])
-<<<<<<< HEAD
-    A = 2.5
-=======
     A = 20
->>>>>>> 4728431d2e1897746d51fcfe6f99021943799068
     OMEGA = 1
     PERIOD = 2*np.pi/OMEGA
     PHI = 30
@@ -62,10 +58,7 @@ if __name__ == "__main__":
 
     # save to file
     np.savetxt("build/trajectory.txt", trajectory, fmt="%.5f", delimiter=" ")
-<<<<<<< HEAD
-=======
     np.savetxt("build/Release/trajectory.txt", trajectory, fmt="%.5f", delimiter=" ")
->>>>>>> 4728431d2e1897746d51fcfe6f99021943799068
     np.savetxt("trajectory.txt", trajectory, fmt="%.5f", delimiter=" ")
 
     print("Done!")
