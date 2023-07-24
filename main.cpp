@@ -18,8 +18,15 @@
 
 #define RUN_CODE 2
 
+#include <stdio.h>  /* defines FILENAME_MAX */
+#ifdef _WIN32
+    #include <direct.h>
+    #define GetCurrentDir _getcwd
+#else
+    #include <unistd.h>
+    #define GetCurrentDir getcwd
+ #endif
 #include <fstream>
-#include <filesystem>
 // TODO3: move robot using velocity control following a trajectory (sin curve) and write the speed and acceleration to file
 
 int main()
@@ -38,7 +45,15 @@ int main()
     // TODO2: move robot following a trajectory, which wroten in the file
     // read trajectory from file trajectory.txt
     // write trajectory using xArm API
-    auto currentFolder = std::filesystem::current_path();
+    char cCurrentPath[FILENAME_MAX];
+    if (!GetCurrentDir(cCurrentPath, sizeof(cCurrentPath)))
+    {
+    return errno;
+    }
+
+    cCurrentPath[sizeof(cCurrentPath) - 1] = '\0'; /* not really required */
+    std::string currentFolder(cCurrentPath);
+    std::cout << "The current working directory is " << currentFolder << std::endl;
     std::string fileName = "trajectory.txt";
     fp32 newSpeed{10};
     std::ifstream trajFile(currentFolder.append(fileName), std::ios::in);
