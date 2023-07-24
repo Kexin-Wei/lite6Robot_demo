@@ -1,0 +1,4 @@
+build
+*.dcm
+__pycache__
+build_examples
