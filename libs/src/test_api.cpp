@@ -36,13 +36,13 @@ int testApi(const std::string& port)
   print_nvect("* joint_acc_limit:", arm->joint_acc_limit, 2);
   print_nvect("* joints_torque:", arm->joints_torque, 7);
 
-  printf("==========DH PARAMS==============\n");
-  fp32 dh_params[28];
-  arm->get_dh_params(dh_params);
-  for (int i = 0; i < 7; i++)
-  {
-    printf("Joint %d: theta: %f, alpha: %f, r: %f, d: %f\n", dh_params[i*7],dh_params[i*7+1],dh_params[i*7+2],dh_params[i*7+3]);
-  }
+  // printf("==========DH PARAMS==============\n"); not available in xarm_api.h sdk version 1.11.5
+  // fp32 dh_params[28];
+  // arm->get_dh_params(dh_params);
+  // for (int i = 0; i < 7; i++)
+  // {
+  //   printf("Joint %d: theta: %f, alpha: %f, r: %f, d: %f\n", dh_params[i*7],dh_params[i*7+1],dh_params[i*7+2],dh_params[i*7+3]);
+  // }
   
   return 0;
 }
