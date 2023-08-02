@@ -2,3 +2,4 @@ build
 *.dcm
 __pycache__
 build_examples
+.ipynb_checkpoints
